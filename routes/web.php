@@ -25,4 +25,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/change-password', [ChangePasswordController::class, 'updatePassword'])->name('change-password');
 
     Route::get('/new-employe', [NewEmployeController::class, 'index'])->name('new-employe');
+    Route::post('/sendmail-new-employee', [NewEmployeController::class, 'sendMailNewEmploye'])->name('sendmail-new-employee');
 });

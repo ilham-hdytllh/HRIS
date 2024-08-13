@@ -79,49 +79,70 @@
                     Training
                     Berakhir.
                 </h6>
+                <!-- end table -->
+                @if (auth()->user()->dept == 'HRD')
+                    <h4 class="text-center mt-5">DATA KARYAWAN BARU SEMUA DEPARTEMEN</h4>
+                    <form method="POST" action="{{ route('sendmail-new-employee') }}">
+                        @csrf
+                        <div class="row mt-3 mb-0" x-data="{ checkedItems: [] }">
+                            <div class="col-20">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="data-karyawan-semua"
+                                                class="table table-sm table-bordered table-hover table-striped w-100">
+                                                <thead class="table-secondary">
+                                                    <tr>
+                                                        <th>*</th>
+                                                        <th>No Scan</th>
+                                                        <th>Nama</th>
+                                                        <th>Departement</th>
+                                                        <th>Tgl Masuk</th>
+                                                        <th>Jabatan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($all_employes as $employe)
+                                                        <tr>
+                                                            <td>
+                                                                @if ($employe['status_email_kontrak'] != 2)
+                                                                    <input type="checkbox" class="checkbox" name="no_scan[]"
+                                                                        :value="'{{ $employe['no_scan'] }}/{{ $employe['nama'] }}/{{ $employe['dept'] }}/{{ $employe['tgl_masuk'] }}/{{ $employe['tgl_evaluasi'] }}/{{ $employe['jabatan'] }}'"
+                                                                        x-model="checkedItems"
+                                                                        x-bind:checked="checkedItems.includes(
+                                                                            '{{ $employe['no_scan'] }}')">
+                                                                @else
+                                                                    <input type="checkbox" class="checkbox" name="no_scan[]"
+                                                                        checked disabled>
+                                                                @endif
+                                                            </td>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>{{ $employe->no_scan }}</td>
+                                                            <td>{{ $employe->nama }}</td>
+                                                            <td>{{ $employe->dept }}</td>
+                                                            <td>{{ $employe->jabatan }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end table-responsive -->
+                                    </div> <!-- end card body -->
+                                </div> <!-- end card -->
+                            </div> <!-- end col -->
+                            <div class="col-12 text-end mb-2">
+                                @if (auth()->user()->dept == 'HRD')
+                                    <button x-show="checkedItems.length > 0" class="btn btn-primary me-2" type="submit"
+                                        name="send-email">
+                                        <i class="fa fa-envelope"></i> Kirim Email
+                                    </button>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                @endif
+            </div>
 
 
-                <!-- end page title -->
-                <h4 class="text-center mt-5">DATA KARYAWAN BARU SEMUA DEPARTEMEN</h4>
-                <div class="row mt-3 mb-0">
-                    <div class="col-20">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="data-karyawan-semua"
-                                        class="table table-sm table-bordered table-hover table-striped w-100">
-                                        <thead class="table-secondary">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>No Scan</th>
-                                                <th>Nama</th>
-                                                <th>Departement</th>
-                                                <th>Tgl Masuk</th>
-                                                <th>Jabatan</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @foreach ($all_employes as $employe)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $employe->no_scan }}</td>
-                                                    <td>{{ $employe->nama }}</td>
-                                                    <td>{{ $employe->dept }}</td>
-                                                    <td>{{ $employe->ftgl_masuk }}</td>
-                                                    <td>{{ $employe->jabatan }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div> <!-- end table-responsive -->
-
-                            </div> <!-- end card body-->
-                        </div> <!-- end card -->
-                    </div><!-- end col-->
-                </div>
-
-            </div> <!-- container -->
 
         </div> <!-- content -->
     </div>
