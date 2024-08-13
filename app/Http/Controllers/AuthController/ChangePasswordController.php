@@ -32,6 +32,7 @@ class ChangePasswordController extends Controller
             }
 
             $user->password = Hash::make($request->new_password);
+            /** @var \App\Models\User $user **/
             $user->save();
 
             $flasher->addSuccess('Password changed successfully.');

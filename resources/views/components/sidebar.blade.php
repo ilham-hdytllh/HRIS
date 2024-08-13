@@ -52,7 +52,7 @@
                       </a>
                       <div class="collapse" id="sidebardashboard">
                           <ul class="nav-second-level">
-                              <li><a href="#">Karyawan Baru</a></a></li>
+                              <li><a href="{{ route('new-employe') }}">Karyawan Baru</a></a></li>
                               <li><a href="#">Habis Kontrak</a></li>
                               <li><a href="#">Seragam Dan Id Card Dept</a></li>
                               <li><a href="#">Seragam Dan Id Card All</a></li>
