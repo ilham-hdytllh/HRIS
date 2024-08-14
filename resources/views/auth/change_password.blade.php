@@ -11,9 +11,8 @@
     <!-- ============================================================== -->
 
     <div class="content-page">
+        <!-- Start Content-->
         <div class="content">
-
-            <!-- Start Content-->
             <div class="container-fluid">
 
                 <!-- start page title -->
@@ -135,9 +134,8 @@
                 <!-- end row -->
 
             </div> <!-- container -->
-
-        </div> <!-- content -->
-
+        </div> 
+        <!-- End content -->
     </div>
 
     <!-- ============================================================== -->

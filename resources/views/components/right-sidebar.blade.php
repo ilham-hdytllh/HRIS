@@ -124,4 +124,4 @@
 
       </div> <!-- end slimscroll-menu-->
   </div>
-  <!-- /Right-bar -->
+  <!-- End Right Sidebar -->

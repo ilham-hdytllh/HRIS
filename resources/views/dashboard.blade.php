@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="content-page">
+        <!-- Start Content-->
         <div class="content">
 
-            <!-- Start Content-->
             <div class="container-fluid">
 
                 <!-- start page title -->
@@ -91,17 +91,15 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div> <!-- end table-responsive -->
-
-                            </div> <!-- end card body-->
-                        </div> <!-- end card -->
-                    </div><!-- end col-->
+                                </div> 
+                            </div> 
+                        </div>
+                    </div>
                 </div>
 
-            </div> <!-- container -->
-
-        </div> <!-- content -->
-
-
+            </div> 
+            
+        </div> 
+        <!-- End content -->
     </div>
 @endsection

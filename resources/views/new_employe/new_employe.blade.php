@@ -10,8 +10,8 @@
 
 @section('content')
     <div class="content-page">
+        <!-- Start content -->
         <div class="content">
-
             <!-- Start Content-->
             <div class="container-fluid">
 
@@ -23,7 +23,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- end page title -->
+                <!-- End page title -->
+
                 <h4 class="text-center">DATA KARYAWAN BARU DEPARTEMEN</h4>
                 <div class="row mt-3 mb-0">
                     <div class="col-20">
@@ -58,11 +59,10 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div> <!-- end table-responsive -->
-
-                            </div> <!-- end card body-->
-                        </div> <!-- end card -->
-                    </div><!-- end col-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <h5 class="text-danger mt-1 mb-0 fs-15">Note : </h5>
@@ -70,7 +70,7 @@
                     Training
                     Berakhir.
                 </h6>
-                <!-- end table -->
+
                 @if (auth()->user()->dept == 'HRD')
                     <h4 class="text-center mt-5">DATA KARYAWAN BARU SEMUA DEPARTEMEN</h4>
                     <form method="POST" action="{{ route('sendmail-new-employee') }}">
@@ -122,10 +122,10 @@
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                        </div> <!-- end table-responsive -->
-                                    </div> <!-- end card body -->
-                                </div> <!-- end card -->
-                            </div> <!-- end col -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-12 text-end mb-2">
                                 @if (auth()->user()->dept == 'HRD')
                                     <button x-show="checkedItems.length > 0" class="btn btn-primary me-2" type="submit"
@@ -138,10 +138,8 @@
                     </form>
                 @endif
             </div>
-
-
-
-        </div> <!-- content -->
+        </div>
+        <!-- End content -->
     </div>
 @endsection
 

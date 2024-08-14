@@ -204,12 +204,11 @@
               </ul>
 
           </div>
-          <!-- End Sidebar -->
+          <!-- End Sidemenu -->
 
           <div class="clearfix"></div>
 
       </div>
-      <!-- Sidebar -left -->
 
   </div>
   <!-- Left Sidebar End -->
