@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Controller;
-use App\Models\Karyawan\Karyawan;
+use App\Models\Employe\Employe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,17 +11,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $jml_karyawan = Karyawan::where('status_karyawan', '!=', 'resigned')
+        $jml_karyawan = Employe::where('status_karyawan', '!=', 'resigned')
             ->where('status_karyawan', '!=', 'perubahan_status')
             ->count();
 
-        $jml_karyawan_pria = Karyawan::where('status_karyawan', '!=', 'resigned')
+        $jml_karyawan_pria = Employe::where('status_karyawan', '!=', 'resigned')
             ->where('status_karyawan', '!=', 'perubahan_status')
             ->where('jenis_kelamin', 'Laki')
             ->count();
 
-        $jml_karyawan_wanita = Karyawan::
-                where('status_karyawan', '!=', 'resigned')
+        $jml_karyawan_wanita = Employe::where('status_karyawan', '!=', 'resigned')
             ->where('status_karyawan', '!=', 'perubahan_status')
             ->where('jenis_kelamin', 'wanita')
             ->count();
@@ -32,7 +31,7 @@ class DashboardController extends Controller
             ->where('status_karyawan', '!=', 'resigned')
             ->where('status_karyawan', '!=', 'perubahan_status')
             ->select(DB::raw('dept,dept_name, COUNT(*) as total'))
-            ->groupBy('dept','dept_name')
+            ->groupBy('dept', 'dept_name')
             ->orderBy('dept')
             ->get();
         return view('dashboard', compact('jml_karyawan', 'jml_karyawan_pria', 'jml_karyawan_wanita', 'tot_karyawan'));

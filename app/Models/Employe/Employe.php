@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models\Karyawan;
+namespace App\Models\Employe;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Karyawan extends Model
+class Employe extends Model
 {
     use HasFactory;
+
     protected $connection = 'hrd';
 
     protected $table = 'hrd.tbl_makar';

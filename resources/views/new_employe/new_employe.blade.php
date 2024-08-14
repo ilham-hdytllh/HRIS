@@ -88,6 +88,11 @@
                             <div class="col-20">
                                 <div class="card">
                                     <div class="card-body">
+                                        <div class="text-start">
+                                            <button class="btn btn-success me-2 mb-2" type="submit" name="send-email">
+                                                <i class="fa fa-file-excel"></i> Export to Excel
+                                            </button>
+                                        </div>
                                         <div class="table-responsive">
                                             <table id="data-karyawan-semua"
                                                 class="table table-sm table-bordered table-hover table-striped w-100">
@@ -116,10 +121,10 @@
                                                                         checked disabled>
                                                                 @endif
                                                             </td>
-                                                            <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $employe->no_scan }}</td>
                                                             <td>{{ $employe->nama }}</td>
                                                             <td>{{ $employe->dept }}</td>
+                                                            <td>{{ $employe->tgl_masuk }}</td>
                                                             <td>{{ $employe->jabatan }}</td>
                                                         </tr>
                                                     @endforeach

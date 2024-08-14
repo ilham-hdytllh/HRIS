@@ -4,6 +4,7 @@ namespace App\Http\Controllers\NewEmployeController;
 
 use App\Http\Controllers\Controller;
 use App\Mail\EvaluationEmail;
+use App\Models\Employe\Employe;
 use App\Models\Karyawan\Karyawan;
 use Exception;
 use Flasher\Toastr\Prime\ToastrFactory;
@@ -17,10 +18,15 @@ use function PHPUnit\Framework\isNull;
 
 class NewEmployeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user()->username;
         $dept = Auth::user()->dept;
+
+
+        // Ambil parameter filter dari request
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
 
         // Memastikan informasi `user` ada di session
         if (!$user || !$dept) {
@@ -28,7 +34,7 @@ class NewEmployeController extends Controller
         }
 
         if ($user == "iso.hrd") {
-            $dept_employes = Karyawan::select([
+            $dept_employes = Employe::select([
                 'no_scan',
                 'nama',
                 'dept',
@@ -48,7 +54,7 @@ class NewEmployeController extends Controller
                 ->orderBy('tgl_masuk', 'DESC')
                 ->get();
         } else {
-            $dept_employes = Karyawan::select([
+            $dept_employes = Employe::select([
                 'no_scan',
                 'nama',
                 'dept',
@@ -69,7 +75,7 @@ class NewEmployeController extends Controller
                 ->get();
         }
 
-        $all_employes = Karyawan::select([
+        $all_employes = Employe::select([
             'no_scan',
             'nama',
             'dept',
